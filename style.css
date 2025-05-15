@@ -15,8 +15,9 @@ html, body {
 body {
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Alinha no topo */
-    padding: 20px; /* Espaço para evitar corte */
+    background-color: #e6f0fa;
+    padding: 20px 0;
+    min-height: 100vh;
     overflow-y: auto;
 }
 

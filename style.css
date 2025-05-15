@@ -1,0 +1,181 @@
+/* Reset e base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #e6f0fa;
+}
+
+.container {
+    width: 90%;
+    max-width: 400px;
+    height: 90vh;
+    max-height: 750px;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Estilo do cabeçalho */
+.header {
+    background-color: #007bff;
+    width: 100%;
+    padding: 20px;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* Telas */
+.screen {
+    width: 100%;
+    height: calc(100% - 60px);
+    display: none;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.active {
+    display: flex;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+select, input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+p, label {
+    font-size: 1rem;
+    color: #333;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0 20px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #e6f0fa;
+}
+
+.profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: #007bff;
+}
+
+.link-button {
+    background: none;
+    border: none;
+    color: #007bff;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+ul {
+    list-style: none;
+    width: 100%;
+}
+
+ul li {
+    margin: 8px 0;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+ul li button {
+    margin-left: 0; /* Remover a margem à esquerda para que o botão se alinhe corretamente */
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    background-color: #28a745;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    width: auto; /* Garantir que o tamanho do botão se ajuste ao conteúdo */
+    max-width: 100%; /* Limita o botão a não ultrapassar a largura do item da lista */
+    box-sizing: border-box; /* Certifica-se de que o padding e a borda sejam incluídos na largura */
+}
+
+ul li button:hover {
+    background-color: #218838;
+}
+
+
+textarea {
+    resize: vertical;
+}
+
+/* Estilos extras para diferenciação visual */
+select:focus, input:focus, textarea:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+/* Responsividade */
+@media screen and (max-height: 600px) {
+    .container {
+        height: 95vh;
+    }
+}
+
+.logo-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo-container img {
+    max-width: 400px;  /* Reduz o tamanho da imagem */
+    height: auto;
+    display: inline-block;
+    border: none; /* Remove qualquer borda */
+}

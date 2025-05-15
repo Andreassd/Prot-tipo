@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>SGHSS - Protótipo Interativo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+      <div id="logoContainer" class="logo-container">
+        <img src="Logo.png" alt="Logo SGHSS">
+      </div>
+  
+      <div id="screens">
+            <!-- Tela de login -->
+            <div id="login" class="screen active">
+                <h2>Login</h2>
+                <select id="userType">
+                    <option value="paciente">Paciente</option>
+                    <option value="profissional">Profissional de Saúde</option>
+                    <option value="administrativo">Administrativo</option>
+                </select>
+                <input type="text" id="username" placeholder="Usuário">
+                <input type="password" id="password" placeholder="Senha">
+                <button onclick="login()">Entrar</button>
+                <button class="link-button" onclick="navigate('cadastro')">Não possui uma conta? Cadastre-se</button>
+            </div>
+
+            <!-- Tela de cadastro -->
+            <div id="cadastro" class="screen">
+                <h2>Cadastro</h2>
+                <input type="text" placeholder="Nome completo">
+                <input type="text" placeholder="CPF">
+                <input type="date" placeholder="Data de nascimento">
+                <input type="tel" placeholder="Telefone">
+                <input type="text" placeholder="Endereço">
+                <input type="email" placeholder="Email">
+                <input type="password" placeholder="Senha">
+                <input type="password" placeholder="Confirmação de senha">
+                <button>Cadastrar</button>
+                <button class="link-button" onclick="navigate('login')">Já possui uma conta? Entrar</button>
+                <button onclick="navigate('login')">Voltar</button>
+            </div>
+
+            <!-- Dashboard Paciente -->
+            <div id="dashboardPaciente" class="screen">
+                <h2>Dashboard - Paciente</h2>
+                <div class="profile">
+                    <img src="foto_paciente.jpg" alt="Paciente">
+                    <span>João Silva</span>
+                </div>
+                <button onclick="navigate('agendarConsulta')">Agendar Consulta</button>
+                <button onclick="navigate('minhasConsultasPaciente')">Minhas Consultas</button>
+                <button onclick="navigate('historicoMedico')">Histórico Médico</button>
+                <button onclick="navigate('telemedicinaPaciente')">Telemedicina</button>
+                <button onclick="navigate('login')">Sair</button>
+            </div>
+
+            <!-- Dashboard Profissional -->
+            <div id="dashboardProfissional" class="screen">
+                <h2>Dashboard - Profissional</h2>
+                <div class="profile">
+                    <img src="foto_profissional.jpg" alt="Profissional">
+                    <span>Dra. Fernanda Souza</span>
+                </div>
+                <button onclick="navigate('minhasConsultasProfissional')">Minhas Consultas</button>
+                <button onclick="navigate('prontuarios')">Prontuários</button>
+                <button onclick="navigate('emitirReceita')">Emitir Receita</button>
+                <button onclick="navigate('telemedicinaProfissional')">Telemedicina</button>
+                <button onclick="navigate('login')">Sair</button>
+            </div>
+
+      <!-- Dashboard Administrativo -->
+            <div id="dashboardAdministrativo" class="screen">
+                <h2>Dashboard - Administrativo</h2>
+                <div class="profile">
+                  <img src="foto_administrativo.png" alt="Administrativo" />
+                  <span>Maria Oliveira</span>
+                </div>
+                <button onclick="navigate('gerenciarPacientes')">Gerenciar Pacientes</button>
+                <button onclick="navigate('gerenciarProfissionais')">Gerenciar Profissionais</button>
+                <button onclick="navigate('internacoes')">Internações</button>
+                <button onclick="navigate('relatorios')">Relatórios</button>
+                <button onclick="navigate('login')">Sair</button>
+              </div>
+        
+              <!-- Gerenciar Pacientes -->
+              <div id="gerenciarPacientes" class="screen">
+                <h2>Gerenciar Pacientes</h2>
+                <input type="text" placeholder="Buscar paciente por nome..." />
+                <ul>
+                  <li>João Silva - <button>Editar</button></li>
+                  <li>Ana Souza - <button>Editar</button></li>
+                  <li>Pedro Martins - <button>Editar</button></li>
+                </ul>
+                <button onclick="navigate('dashboardAdministrativo')">Voltar</button>
+              </div>
+        
+              <!-- Gerenciar Profissionais -->
+              <div id="gerenciarProfissionais" class="screen">
+                <h2>Gerenciar Profissionais</h2>
+                <input type="text" placeholder="Buscar profissional por nome ou CRM..." />
+                <ul>
+                  <li>Dra. Fernanda Souza - Cardiologista - <button>Editar</button></li>
+                  <li>Dr. Marcos Lima - Pediatra - <button>Editar</button></li>
+                </ul>
+                <button onclick="navigate('dashboardAdministrativo')">Voltar</button>
+              </div>
+        
+              <!-- Internações -->
+              <div id="internacoes" class="screen">
+                <h2>Internações Hospitalares</h2>
+                <label>Paciente:</label>
+                <input type="text" placeholder="Nome do paciente" />
+                <label>Data da internação:</label>
+                <input type="date" />
+                <label>Motivo:</label>
+                <textarea placeholder="Descreva o motivo da internação..."></textarea>
+                <button>Registrar Internação</button>
+                <h3 style="margin-top: 20px;">Histórico de Internações:</h3>
+                <ul>
+                  <li>João Silva - 05/04/2025 - Apendicite</li>
+                  <li>Maria Clara - 22/03/2025 - Observação pós-cirúrgica</li>
+                </ul>
+                <button onclick="navigate('dashboardAdministrativo')">Voltar</button>
+              </div>
+        
+              <!-- Relatórios -->
+              <div id="relatorios" class="screen">
+                <h2>Relatórios e Estatísticas</h2>
+                <label>Tipo de relatório:</label>
+                <select>
+                  <option>Pacientes cadastrados</option>
+                  <option>Consultas realizadas</option>
+                  <option>Internações por mês</option>
+                </select>
+                <label>Período:</label>
+                <input type="month" />
+                <button>Gerar Relatório</button>
+                <div style="margin-top: 20px; background: #eee; padding: 10px; border-radius: 5px;">
+                  <p><strong>Relatório de exemplo:</strong></p>
+                  <p>Consultas em março de 2025: <strong>138</strong></p>
+                  <p>Internações: <strong>24</strong></p>
+                </div>
+                <button onclick="navigate('dashboardAdministrativo')">Voltar</button>
+              </div>
+
+            <!-- Outras telas -->
+            <div id="agendarConsulta" class="screen">
+                <h2>Agendar Consulta</h2>
+                <label>Especialidade:</label>
+                <select><option>Clínico Geral</option><option>Cardiologia</option><option>Pediatria</option><option>Dermatologia</option></select>
+                <label>Data e Hora:</label>
+                <input type="datetime-local">
+                <label>Tipo de Consulta:</label>
+                <select><option>Presencial</option><option>Online</option></select>
+                <label>Observações:</label>
+                <textarea placeholder="Descreva sintomas ou outras informações relevantes"></textarea>
+                <button>Confirmar Agendamento</button>
+                <button onclick="navigate('dashboardPaciente')">Voltar</button>
+            </div>
+
+            <div id="minhasConsultasPaciente" class="screen">
+                <h2>Minhas Consultas (Paciente)</h2>
+                <ul>
+                    <li>12/04/2025 - Clínico Geral - Confirmada</li>
+                    <li>28/03/2025 - Cardiologia - Realizada</li>
+                </ul>
+                <button onclick="navigate('dashboardPaciente')">Voltar</button>
+            </div>
+            
+            <!-- Minhas Consultas - Profissional -->
+            <div id="minhasConsultasProfissional" class="screen">
+                <h2>Minhas Consultas (Profissional)</h2>
+                <ul>
+                    <li>12/04/2025 - João Silva - Confirmada</li>
+                    <li>28/03/2025 - Ana Souza - Realizada</li>
+                </ul>
+                <button onclick="navigate('dashboardProfissional')">Voltar</button>
+            </div>
+
+            <div id="historicoMedico" class="screen">
+                <h2>Histórico Médico</h2>
+                <ul>
+                    <li>Consulta: 28/03/2025 - Cardiologia - Hipertensão em estágio inicial</li>
+                    <li>Exame: 20/03/2025 - Eletrocardiograma - Normal</li>
+                </ul>
+                <button onclick="navigate('dashboardPaciente')">Voltar</button>
+            </div>
+
+            <div id="telemedicinaPaciente" class="screen">
+                <h2>Telemedicina</h2>
+                <p>Sala de videoconferência ativa.</p>
+                <div style="border: 1px solid #ccc; width: 100%; height: 200px; background: #eee; margin-bottom: 10px;">[Vídeo do Médico]</div>
+                <label>Mensagens:</label>
+                <input type="text" placeholder="Digite sua mensagem...">
+                <button>Enviar</button>
+                <label>Compartilhar Arquivo:</label>
+                <input type="file">
+                <button onclick="navigate('dashboardPaciente')">Encerrar Chamada</button>
+            </div>
+
+            <div id="telemedicinaProfissional" class="screen">
+                <h2>Telemedicina</h2>
+                <p>Conferência com paciente ativa.</p>
+                <div style="border: 1px solid #ccc; width: 100%; height: 200px; background: #eee; margin-bottom: 10px;">[Vídeo do Paciente]</div>
+                <label>Mensagens:</label>
+                <input type="text" placeholder="Digite uma mensagem...">
+                <button>Enviar</button>
+                <label>Compartilhar Arquivo:</label>
+                <input type="file">
+                <button onclick="navigate('dashboardProfissional')">Encerrar Chamada</button>
+            </div>
+
+            <!-- Tela de Prontuários -->
+<div id="prontuarios" class="screen">
+    <h2>Prontuários</h2>
+    <ul>
+        <li>João Silva - 28/03/2025 - Hipertensão leve</li>
+        <li>Ana Souza - 15/03/2025 - Alergia alimentar</li>
+    </ul>
+    <button onclick="navigate('dashboardProfissional')">Voltar</button>
+</div>
+
+<!-- Tela de Emitir Receita -->
+<div id="emitirReceita" class="screen">
+    <h2>Emitir Receita</h2>
+    <label>Paciente:</label>
+    <input type="text" placeholder="Nome do paciente">
+    <label>Medicamento:</label>
+    <input type="text" placeholder="Nome do medicamento">
+    <label>Dosagem e Instruções:</label>
+    <textarea placeholder="Ex: 1 comprimido a cada 8h por 5 dias"></textarea>
+    <button>Gerar Receita</button>
+    <button onclick="navigate('dashboardProfissional')">Voltar</button>
+</div>
+        </div>
+    </div>
+
+    <script>
+        function navigate(screenId) {
+            document.querySelectorAll('.screen').forEach(screen => {
+                screen.classList.remove('active');
+            });
+            const target = document.getElementById(screenId);
+            if (target) {
+                target.classList.add('active');
+            } else {
+                document.getElementById('login').classList.add('active');
+                console.error(`Tela "${screenId}" não encontrada. Redirecionando para login.`);
+            }
+        }
+
+        function login() {
+            const userType = document.getElementById("userType").value;
+            if (userType === "paciente") {
+                navigate('dashboardPaciente');
+            } else if (userType === "profissional") {
+                navigate('dashboardProfissional');
+            } else if (userType === "administrativo") {
+                navigate('dashboardAdministrativo');
+            } else {
+                alert("Perfil não reconhecido.");
+            }
+        }
+    </script>
+</body>
+</html>

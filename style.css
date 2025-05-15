@@ -6,24 +6,29 @@
     font-family: Arial, sans-serif;
 }
 
+html, body {
+    height: 100%;
+    background-color: #e6f0fa;
+}
+
+/* Permitir rolagem quando necessário */
 body {
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #e6f0fa;
+    align-items: flex-start; /* Alinha no topo */
+    padding: 20px; /* Espaço para evitar corte */
+    overflow-y: auto;
 }
 
 .container {
     width: 90%;
     max-width: 400px;
-    height: 90vh;
-    max-height: 750px;
     background: #ffffff;
     border-radius: 15px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Estilo do cabeçalho */
@@ -35,18 +40,19 @@ body {
     text-align: center;
     font-weight: bold;
     font-size: 1.2rem;
+    flex-shrink: 0;
 }
 
 /* Telas */
 .screen {
     width: 100%;
-    height: calc(100% - 60px);
     display: none;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     padding: 20px;
     overflow-y: auto;
+    flex-grow: 1;
 }
 
 .active {
@@ -133,22 +139,21 @@ ul li {
 }
 
 ul li button {
-    margin-left: 0; /* Remover a margem à esquerda para que o botão se alinhe corretamente */
+    margin-left: 0;
     padding: 5px 10px;
     font-size: 0.9rem;
     background-color: #28a745;
     border: none;
     border-radius: 4px;
     color: white;
-    width: auto; /* Garantir que o tamanho do botão se ajuste ao conteúdo */
-    max-width: 100%; /* Limita o botão a não ultrapassar a largura do item da lista */
-    box-sizing: border-box; /* Certifica-se de que o padding e a borda sejam incluídos na largura */
+    width: auto;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 ul li button:hover {
     background-color: #218838;
 }
-
 
 textarea {
     resize: vertical;
@@ -163,8 +168,11 @@ select:focus, input:focus, textarea:focus {
 
 /* Responsividade */
 @media screen and (max-height: 600px) {
+    body {
+        align-items: flex-start;
+    }
     .container {
-        height: 95vh;
+        height: auto;
     }
 }
 
@@ -174,8 +182,8 @@ select:focus, input:focus, textarea:focus {
 }
 
 .logo-container img {
-    max-width: 400px;  /* Reduz o tamanho da imagem */
+    max-width: 400px;
     height: auto;
     display: inline-block;
-    border: none; /* Remove qualquer borda */
+    border: none;
 }
